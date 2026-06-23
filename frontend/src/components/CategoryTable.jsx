@@ -1,3 +1,8 @@
+import {
+ formatIndianCurrency
+}
+from "../lib/formatters";
+
 function CategoryTable({
  data
 }){
@@ -6,22 +11,46 @@ function CategoryTable({
 
   <div
    className="
+   rounded-3xl
+   border
+   border-slate-200
    bg-white
-   rounded-xl
-   shadow
    p-5
+   shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)]
    "
   >
 
-   <h2
+   <div
     className="
-    text-xl
-    font-bold
     mb-4
+    flex
+    items-end
+    justify-between
+    gap-4
     "
    >
-    Categories
-   </h2>
+    <div>
+     <h2
+      className="
+      text-xl
+      font-semibold
+      text-slate-950
+      "
+     >
+      Top categories by revenue
+     </h2>
+
+     <p
+      className="
+      mt-1
+      text-sm
+      text-slate-500
+      "
+     >
+      A quick leaderboard to seed useful category comparisons.
+     </p>
+    </div>
+   </div>
 
    <table
     className="
@@ -33,11 +62,35 @@ function CategoryTable({
 
      <tr>
 
-      <th>
+      <th
+       className="
+       border-b
+       border-slate-200
+       pb-3
+       text-left
+       text-xs
+       font-semibold
+       uppercase
+       tracking-[0.18em]
+       text-slate-500
+       "
+      >
        Category
       </th>
 
-      <th>
+      <th
+       className="
+       border-b
+       border-slate-200
+       pb-3
+       text-right
+       text-xs
+       font-semibold
+       uppercase
+       tracking-[0.18em]
+       text-slate-500
+       "
+      >
        Revenue
       </th>
 
@@ -53,17 +106,35 @@ function CategoryTable({
        (item,index)=>(
         <tr
          key={index}
+         className="
+         border-b
+         border-slate-100
+         last:border-b-0
+         "
         >
 
-         <td>
-          {
-           item.category_name
-          }
+         <td
+          className="
+          py-3
+          text-sm
+          font-medium
+          text-slate-800
+          "
+         >
+          {item.category_name}
          </td>
 
-         <td>
+         <td
+          className="
+          py-3
+          text-right
+          text-sm
+          font-semibold
+          text-slate-950
+          "
+         >
           ₹{
-           Math.round(
+           formatIndianCurrency(
             item.revenue
            )
           }

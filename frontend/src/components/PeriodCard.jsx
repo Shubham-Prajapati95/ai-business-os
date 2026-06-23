@@ -1,30 +1,59 @@
+import {
+  formatIndianCurrency
+}
+from "../lib/formatters";
+
 function PeriodCard({
   title,
-  data
+  subtitle,
+  data,
+  emptyMessage
 }){
 
   return(
 
     <div
       className="
+      border
+      border-slate-200
       bg-white
-      rounded-xl
-      shadow
+      rounded-3xl
       p-5
+      shadow-[0_24px_60px_-36px_rgba(15,23,42,0.45)]
       "
     >
 
-      <h2
+      <div
         className="
-        text-xl
-        font-bold
         mb-4
         "
       >
-        {title}
-      </h2>
 
-      {
+        <h2
+          className="
+          text-xl
+          font-semibold
+          text-slate-950
+          "
+        >
+          {title}
+        </h2>
+
+        {subtitle ? (
+          <p
+            className="
+            mt-1
+            text-sm
+            text-slate-500
+            "
+          >
+            {subtitle}
+          </p>
+        ) : null}
+
+      </div>
+
+      {data.length ? (
 
         data.map((item,index)=>(
 
@@ -33,24 +62,73 @@ function PeriodCard({
             className="
             flex
             justify-between
-            py-2
+            items-center
+            gap-4
+            py-3
             border-b
+            border-slate-100
+            last:border-b-0
             "
           >
 
-            <span>
-              {item.period}
-            </span>
+            <div>
+              <p
+                className="
+                text-sm
+                font-medium
+                text-slate-900
+                "
+              >
+                {item.period}
+              </p>
 
-            <span>
-              ₹{Math.round(item.revenue)}
+              <p
+                className="
+                mt-1
+                text-xs
+                uppercase
+                tracking-[0.16em]
+                text-slate-400
+                "
+              >
+                Rank {index + 1}
+              </p>
+            </div>
+
+            <span
+              className="
+              text-sm
+              font-semibold
+              text-slate-950
+              "
+            >
+              ₹{
+                formatIndianCurrency(
+                  item.revenue
+                )
+              }
             </span>
 
           </div>
 
         ))
 
-      }
+      ) : (
+        <div
+          className="
+          rounded-3xl
+          border
+          border-dashed
+          border-slate-300
+          bg-slate-50
+          p-6
+          text-sm
+          text-slate-500
+          "
+        >
+          {emptyMessage}
+        </div>
+      )}
 
     </div>
 

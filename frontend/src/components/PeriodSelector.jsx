@@ -5,37 +5,68 @@ function PeriodSelector({
 
   return(
 
-    <select
-      value={value}
-      onChange={(e)=>
-        onChange(
-          e.target.value
-        )
-      }
+    <div
       className="
+      inline-flex
+      items-center
+      gap-3
+      rounded-2xl
       border
-      rounded-lg
-      p-2
+      border-slate-200
+      bg-white
+      px-3
+      py-2.5
+      shadow-sm
       "
     >
 
-      <option value="monthly">
-        Monthly
-      </option>
+      <span
+        className="
+        text-xs
+        font-semibold
+        uppercase
+        tracking-[0.18em]
+        text-slate-500
+        "
+      >
+        Grain
+      </span>
 
-      <option value="weekly">
-        Weekly
-      </option>
+      <select
+        value={value}
+        onChange={(e)=>
+          onChange(
+            e.target.value
+          )
+        }
+        className="
+        bg-transparent
+        text-sm
+        font-medium
+        text-slate-900
+        outline-none
+        "
+      >
 
-      <option value="quarterly">
-        Quarterly
-      </option>
+        <option value="monthly">
+          Monthly
+        </option>
 
-      <option value="yearly">
-        Yearly
-      </option>
+        <option value="weekly">
+          Weekly
+        </option>
 
-    </select>
+        <option value="quarterly">
+          Quarterly
+        </option>
+
+        <option value="yearly">
+          Yearly
+        </option>
+
+      </select>
+
+    </div>
 
   );
 }

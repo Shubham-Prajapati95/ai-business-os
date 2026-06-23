@@ -27,3 +27,31 @@ _Avoid_: Flat unstructured list
 **Revenue Display**:
 The way monetary values are rendered in the analytics UI so users can read them quickly and accurately. On this page, revenue should use Indian digit grouping rather than unformatted or western-style separators.
 _Avoid_: Raw numbers, western grouping by default
+
+**Revenue Workspace**:
+A revenue analytics page shaped around rapid business interpretation, not just chart display. It should help users understand current revenue, change over time, and which periods deserve deeper investigation.
+_Avoid_: Revenue-only chart page, single-visual report
+
+**Revenue Summary Band**:
+The first row of the revenue workspace that gives users the quickest possible business read before they inspect charts. It should prioritise current total revenue, change versus the previous comparable period, and the strongest and weakest periods.
+_Avoid_: KPI overload, alert-first layout
+
+**Comparison Cue**:
+Supplementary context around the main revenue trend that helps users interpret change without turning the page into a multi-series comparison tool. It should highlight directional change or previous-period context while preserving a single primary revenue line.
+_Avoid_: Full comparison mode, chart overload
+
+**Revenue Drilldown Path**:
+The navigation path from an overall revenue signal into the domain-specific page best suited to explain it. Revenue analytics should act as a jump-off point into product, category, or customer analytics rather than trying to answer every diagnostic question itself.
+_Avoid_: Self-contained root-cause page, dead-end KPI cards
+
+**Incomplete Period**:
+A time bucket whose data is still accumulating and therefore cannot be treated as directly comparable to a fully closed bucket. The revenue workspace should label incomplete periods clearly and avoid overstating period-over-period change from them.
+_Avoid_: Silent partial period, implied full-period comparison
+
+**Analytics Guidance State**:
+An explicit page state used when revenue data is empty, sparse, or unavailable. The interface should explain what is missing and what the user can do next, rather than rendering misleading defaults or silent blanks.
+_Avoid_: Console-only failure, fake zero state
+
+**Period Ranking**:
+The interpretation of best and worst periods as the highest and lowest absolute revenue periods within the selected grain. Momentum-style changes should be labelled separately rather than folded into best/worst language.
+_Avoid_: Change-based best period, ambiguous ranking language

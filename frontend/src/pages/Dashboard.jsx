@@ -22,6 +22,10 @@ import {
   getTopCategories
 } from "../api/categoryApi";
 
+import {
+  formatIndianCurrency
+} from "../lib/formatters";
+
 function Dashboard(){
   const navigate = useNavigate();
   
@@ -105,7 +109,11 @@ function Dashboard(){
 
           <KPICard
             title="Revenue"
-            value={`₹${revenue}`}
+            value={`₹${
+              formatIndianCurrency(
+                revenue
+              )
+            }`}
             onClick={()=>
                 navigate("/revenue")
               }
