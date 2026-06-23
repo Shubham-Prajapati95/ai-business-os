@@ -87,8 +87,12 @@ def get_top_products_query():
 
 def get_all_products_query():
     return """
-    SELECT product_name
-    FROM products
+    SELECT
+        p.product_name,
+        c.category_name
+    FROM products p
+    JOIN categories c
+        ON c.category_id = p.category_id
     ORDER BY product_name
     """
 
@@ -308,4 +312,3 @@ def get_top_cities_by_customers_query():
 
     LIMIT %s;
     """
-
